@@ -14,7 +14,7 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(bookingparams)
     @booking.save
-    redirect_to "booking#{index}"
+    redirect_to "bookings#index"
   end
 
   def edit
