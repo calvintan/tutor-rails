@@ -13,7 +13,7 @@ gem 'font-awesome-sass', '~> 5.6.1'
 gem 'sassc-rails'
 gem 'simple_form'
 gem 'uglifier'
-gem 'webpacker'
+# gem 'webpacker'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
@@ -27,3 +27,6 @@ group :development, :test do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'dotenv-rails'
 end
+
+gem 'rest-client'
+gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
