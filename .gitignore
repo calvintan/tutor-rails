@@ -17,8 +17,16 @@
 /storage/*
 !/storage/.keep
 
-.byebug_history
-
 # Ignore master key for decrypting credentials and more.
 /config/master.key
-.env
+
+# Additional files
+*.swp
+.DS_Store
+public/assets
+public/packs
+public/packs-test
+node_modules
+yarn-error.log
+.byebug_history
+.env*
