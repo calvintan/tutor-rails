@@ -15,11 +15,11 @@ Service.destroy_all if Rails.env.development?
     title: Faker::Educator.course_name,
     category: Faker::Educator.subject,
     description: Faker::TvShows::StrangerThings.quote,
+    time: Faker::Time.forward(23, :day),
+    location: Faker::Address.street_address,
     user: u
     )
     Booking.create!(
-      time: Faker::Time.forward(23, :day),
-      location: Faker::Address.street_address,
       service: s,
       user: u
       )
