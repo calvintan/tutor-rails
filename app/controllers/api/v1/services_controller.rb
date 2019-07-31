@@ -15,14 +15,13 @@ class Api::V1::ServicesController < Api::V1::BaseController
   #   @service = Service.new
   # end
 
-
   def create
     @service = Service.new(serviceparams)
     if @service.save
-    render :show
-  else
-    render_error
-  end
+      render :show
+    else
+      render_error
+    end
   end
 
   def edit
