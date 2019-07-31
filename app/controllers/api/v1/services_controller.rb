@@ -1,4 +1,6 @@
 class Api::V1::ServicesController < Api::V1::BaseController
+  skip_before_action :verify_authenticity_token
+
   def index
     @services = Service.all
     render json: @services
@@ -9,15 +11,17 @@ class Api::V1::ServicesController < Api::V1::BaseController
     render json: @service
   end
 
-  def new
-    @service = Service.new
-  end
-
+  # def new
+  #   @service = Service.new
+  # end
 
   def create
     @service = Service.new(serviceparams)
-    @service.save
-    redirect_to root_path
+    if @service.save
+      render :show
+    else
+      render_error
+    end
   end
 
   def edit
@@ -26,7 +30,9 @@ class Api::V1::ServicesController < Api::V1::BaseController
   def update
   end
 
+  private
+
   def serviceparams
-    params.require(:service).permit(:title, :category)
+    params.require(:service).permit(:title, :category, :user_id)
   end
 end
