@@ -1,5 +1,5 @@
 class AddConfirmedToBookings < ActiveRecord::Migration[5.2]
   def change
-    add_column :bookings, :confirmed, :boolean
+    add_column :bookings, :confirmed, :boolean, default: false
   end
 end
