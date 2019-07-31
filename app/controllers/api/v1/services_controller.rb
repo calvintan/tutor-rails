@@ -2,7 +2,7 @@ class Api::V1::ServicesController < Api::V1::BaseController
   skip_before_action :verify_authenticity_token
 
   def index
-    @services = Service.all
+    @services = Service.find_by(category: params[:category])
     render json: @services
   end
 
