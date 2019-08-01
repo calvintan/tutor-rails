@@ -10,7 +10,7 @@ ADDRESS = ["No.333 Renmin Rd, Shanghai", "No.55, Century Avenue, Shanghai", "Sha
   s = Service.create!(
     title: Faker::Educator.course_name,
     category: CATEGORY.sample,
-    description: Faker::TvShows::StrangerThings.quote,
+    description: Faker::Quote.most_interesting_man_in_the_world,
     time: Faker::Time.forward(23, :day),
     location: ADDRESS.sample,
     difficulty: DIFFICULTY.sample,

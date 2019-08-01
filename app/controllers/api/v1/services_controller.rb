@@ -8,7 +8,7 @@ class Api::V1::ServicesController < Api::V1::BaseController
 
   def show
     @service = Service.find(params[:id])
-    render json: @service
+    # render json: @service
   end
 
   # def new
@@ -33,6 +33,6 @@ class Api::V1::ServicesController < Api::V1::BaseController
   private
 
   def serviceparams
-    params.require(:service).permit(:title, :category, :user_id)
+    params.require(:service).permit(:title, :category, :user_id, :description, :location, :time, :difficulty)
   end
 end
