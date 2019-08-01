@@ -2,7 +2,6 @@ class LoginController < ApplicationController
   skip_before_action :authenticate_user!
   skip_before_action :verify_authenticity_token
 
-
   URL = "https://api.weixin.qq.com/sns/jscode2session".freeze
 
   def wechat_user
@@ -18,11 +17,13 @@ class LoginController < ApplicationController
   end
 
   def login
+    p "trying to login"
+    p wechat_user
     @user = User.find_or_create_by(open_id: wechat_user.fetch("openid"))
+    p @user
     render json: {
       userId: @user.id
     }
   end
-
 
 end
