@@ -1,6 +1,12 @@
 class Api::V1::ServicesController < Api::V1::BaseController
   skip_before_action :verify_authenticity_token
 
+  def all
+    # @services = Service.all
+    @services = Service.where(user_id: params[:user_id])
+    render json: @services
+  end
+
   def index
     @services = Service.where(category: params[:category])
     render json: @services
