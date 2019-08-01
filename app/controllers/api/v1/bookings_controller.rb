@@ -1,11 +1,14 @@
 class Api::V1::BookingsController < Api::V1::BaseController
-  def index
-    @bookings = Booking.all
-  end
+  skip_before_action :verify_authenticity_token
 
-  def show
-    @service = Service.find(params[:id])
-  end
+  # def index
+  #   @bookings = Booking.all
+  #   render json: @bookings
+  # end
+
+  # def show
+  #   @service = Service.find(params[:id])
+  # end
 
   def new
     @booking = Booking.new
@@ -14,16 +17,16 @@ class Api::V1::BookingsController < Api::V1::BaseController
   def create
     @booking = Booking.new(bookingparams)
     @booking.save
-    redirect_to "bookings#index"
+    # redirect_to "bookings#index"
   end
 
-  def edit
-  end
+  # def edit
+  # end
 
-  def update
-  end
+  # def update
+  # end
 
   def bookingparams
-    params.require(:booking).permit(:user_id)
+    params.require(:booking).permit(:user_id, :service_id)
   end
 end
