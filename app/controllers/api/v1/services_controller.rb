@@ -36,8 +36,11 @@ class Api::V1::ServicesController < Api::V1::BaseController
 
   def update
     @service = Service.find(params[:id])
-    @service.update(serviceparams)
-    @service.save
+    if @service.update(serviceparams)
+      render :show
+    else
+      render_error
+    end
   end
 
   def destroy
@@ -48,6 +51,11 @@ class Api::V1::ServicesController < Api::V1::BaseController
   private
 
   def serviceparams
-    params.require(:service).permit(:title, :category, :user_id, :description, :location, :time, :difficulty, :show)
+    params.require(:service).permit(:title, :category, :user_id, :description, :location, :time, :difficulty, :show, :longitude, :latitude)
+  end
+
+  def render_error
+    render json: { errors: @service.errors.full_messages },
+      status: :unprocessable_entity
   end
 end
