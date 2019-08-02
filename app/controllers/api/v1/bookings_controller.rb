@@ -15,9 +15,23 @@ class Api::V1::BookingsController < Api::V1::BaseController
   end
 
   def create
-    @booking = Booking.new(bookingparams)
-    @booking.save
-    # redirect_to "bookings#index"
+    service_id = params[:service_id]
+    user_id = params[:booking][:user_id]
+    p "service_id"
+    p service_id
+    p "user_id"
+    p user_id
+    @booking = Booking.new(service_id: service_id, user_id: user_id)
+    render json: @booking
+    p "trying to book"
+    p @booking
+    p "booking failed"
+    p @booking.valid?
+    if @booking.save
+      render :show
+    else
+      render_error
+    end
   end
 
   # def edit
@@ -26,7 +40,7 @@ class Api::V1::BookingsController < Api::V1::BaseController
   # def update
   # end
 
-  def bookingparams
-    params.require(:booking).permit(:user_id, :service_id)
-  end
+  # def bookingparams
+  #   params.require(:booking).permit(:user_id, :service_id)
+  # end
 end
