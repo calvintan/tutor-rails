@@ -1,4 +1,6 @@
+Booking.destroy_all if Rails.env.development?
 Service.destroy_all if Rails.env.development?
+User.destroy_all if Rails.env.development?
 
 CATEGORY = ["chinese", "english", "math", "coding", "korean", "science"]
 DIFFICULTY = ["beginner", "intermediate", "master"]
