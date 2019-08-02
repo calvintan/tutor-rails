@@ -35,6 +35,10 @@ class Api::V1::BookingsController < Api::V1::BaseController
     end
   end
 
+  def destroy
+    @booking = Booking.find(params[:id])
+    @booking.destroy
+  end
   # def edit
   # end
 
