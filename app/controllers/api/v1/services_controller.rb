@@ -51,7 +51,7 @@ class Api::V1::ServicesController < Api::V1::BaseController
   private
 
   def serviceparams
-    params.require(:service).permit(:title, :category, :user_id, :description, :location, :time, :difficulty)
+    params.require(:service).permit(:title, :category, :user_id, :description, :location, :time, :difficulty, :longitude, :latitude)
   end
 
   def render_error

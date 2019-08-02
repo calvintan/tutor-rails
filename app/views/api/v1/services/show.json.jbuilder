@@ -1,1 +1,1 @@
-json.service @service, :id, :title, :category, :description, :time, :location
+json.service @service, :id, :title, :category, :description, :time, :location, :latitude, :longitude
