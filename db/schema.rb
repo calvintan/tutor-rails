@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2019_07_31_033808) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "confirmed"
+    t.boolean "confirmed", default: false
     t.index ["service_id"], name: "index_bookings_on_service_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
