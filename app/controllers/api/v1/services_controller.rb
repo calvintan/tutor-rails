@@ -31,9 +31,13 @@ class Api::V1::ServicesController < Api::V1::BaseController
   end
 
   def edit
+    @service = Service.find(params[:id])
   end
 
   def update
+    @service = Service.find(params[:id])
+    @service.update(serviceparams)
+    @service.save
   end
 
   def destroy
@@ -44,6 +48,6 @@ class Api::V1::ServicesController < Api::V1::BaseController
   private
 
   def serviceparams
-    params.require(:service).permit(:title, :category, :user_id, :description, :location, :time, :difficulty)
+    params.require(:service).permit(:title, :category, :user_id, :description, :location, :time, :difficulty, :show)
   end
 end
