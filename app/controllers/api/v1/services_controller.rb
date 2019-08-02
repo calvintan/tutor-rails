@@ -36,6 +36,11 @@ class Api::V1::ServicesController < Api::V1::BaseController
   def update
   end
 
+  def destroy
+    @service = Service.find(params[:id])
+    @service.destroy
+  end
+
   private
 
   def serviceparams
