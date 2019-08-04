@@ -36,11 +36,9 @@ class Api::V1::ServicesController < Api::V1::BaseController
 
   def update
     @service = Service.find(params[:id])
-    if @service.update(serviceparams)
-      render :show
-    else
-      render_error
-    end
+    @service.update(serviceparams)
+      p 'run'
+    @service.save
   end
 
   def destroy
